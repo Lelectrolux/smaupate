@@ -1,5 +1,90 @@
 @tailwind base;
 
+.content {
+    display: grid;
+    grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax(0, 40em) [main-end] minmax(1em, 1fr) [full-end];
+    @apply font-serif;
+}
+
+.content * {
+    grid-column: main;
+}
+
+.content .splash {
+    grid-column: full;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    margin-bottom: .5em;
+    @apply font-sans font-bold tracking-tight leading-none;
+}
+
+.content p + h1,
+.content p + h2,
+.content p + h3 {
+    margin-top: 2em;
+}
+
+.content h1 {
+    @apply text-3xl;
+}
+
+.content h2 {
+    @apply text-2xl;
+}
+
+.content p + p {
+    text-indent: 1em;
+}
+
+.content figure {
+    grid-column: full;
+    @apply my-4 bg-white p-4 shadow;
+}
+
+.content img {
+    @apply shadow-inner object-cover w-full mx-auto;
+}
+
+.content blockquote {
+    @apply w-full max-w-3xl font-sans text-xl relative mx-auto;
+    quotes: "“" "”" "‘" "’";
+}
+
+.content blockquote::before {
+    content: open-quote;
+    @apply absolute text-6xl;
+    left: -2rem;
+    top: -2rem;
+}
+
+.content figcaption {
+    @apply text-center mt-1 text-gray-600 max-w-3xl -mb-4 mx-auto;
+}
+
+.content figcaption::before {
+    content: "—";
+}
+
+.content q::before {
+    content: open-quote;
+}
+
+.content q::after {
+    content: close-quote;
+}
+.content q {
+    quotes: "“" "”" "‘" "’";
+    @apply italic;
+}
+
+.content ul, .content ol {
+    padding-left: 0;
+    list-style-position: outside;
+}
+
 @tailwind components;
 
 @tailwind utilities;
